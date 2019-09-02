@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./master.xhtml">
+
+            <ui:define name="content">
+                <p:panel>
+                    <ui:insert name="top">
+                        <center>
+                             <h2>
+                                VOTACIÓN 
+                             </h2>
+                        </center>
+                    </ui:insert>
+                    <p:growl id="msgs" showDetail="true" />
+                    <p:dataTable id="eventsDT" var="candidato" value="#{controladorVotar.registro.listaCandidatos}" selectionMode="single" selection="#{controladorVotar.candidatoSeleccionado}" rowKey="#{candidato.documento}" style="width: 250px">
+                        <f:facet name="header">
+                            Tabla de Candidatos
+                        </f:facet>
+                        <p:ajax event="rowSelect" listener="#{controladorVotar.onRowSelect}" update="@form:msgs, eventsDT, @form:votos" />
+                        <p:column headerText="Id" visible="false">
+                            <h:outputText value="#{candidato.documento}" />
+                        </p:column>
+                        <p:column headerText="Candidato">
+                            <h:graphicImage height="100px" width="100px" name="#{candidato.foto}" />
+                            <br></br><br></br>
+                            <h:outputText value="#{candidato.nombres} #{candidato.apellidos}" />
+                        </p:column>
+                    </p:dataTable>
+                </p:panel>
+                <p:panel>
+                    <p:chart id="votos" type="pie" model="#{controladorVotar.grafica}" style="width:800px;height:500px" />
+                </p:panel>
+                <ui:insert name="top">
+                        <center>
+                             <h2>
+                                <p:commandButton value="Cerrar Votaciones" action="finalizar?faces-redirect=true" /> 
+                             </h2>
+                        </center>
+                    </ui:insert>
+                
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
