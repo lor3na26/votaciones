@@ -26,7 +26,7 @@ import org.primefaces.event.FileUploadEvent;
 
 /**
  *
- * @author Yonathan
+ * @author alejandra
  */
 @ManagedBean
 @SessionScoped

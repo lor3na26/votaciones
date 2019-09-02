@@ -10,7 +10,7 @@ import java.util.Date;
 
 /**
  *
- * @author Yonathan
+ * @author alejandra
  */
 public class Candidato implements Serializable{
     private Integer documento;

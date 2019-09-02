@@ -19,7 +19,7 @@ import org.primefaces.model.chart.PieChartModel;
 
 /**
  *
- * @author Yonathan
+ * @author alejandra
  */
 @ManagedBean
 @RequestScoped

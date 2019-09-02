@@ -16,7 +16,7 @@ import modelo.Candidato;
 
 /**
  *
- * @author Yonathan
+ * @author alejandra 
  */
 @ManagedBean
 @SessionScoped
